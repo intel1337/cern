@@ -2,24 +2,42 @@ import os
 import requests
 import urllib
 import sys
+import platform
+import colorama
+from func import menu
+from colorama import  Fore
 
+def clear():
+    if(platform.system == 'Windows'):
+            os.system("cls")
+    else:
+        os.system("clear")
 
-def menu():
-    ascii_path = 'sample.txt'
-    with open(ascii_path, 'r') as ascii:
-            ascii_content = ascii.read()
-            print(ascii_content)
-    print("\n")
-    print("[0] - Exit   [1] - Start   [2] - Proxies")
-    print("\n")
+link = ""
+file = "proxy.txt"
+times = 0
+ip = "127.0.0.1"
+inpstring = (f"{Fore.CYAN}Cern{Fore.WHITE}@{Fore.MAGENTA}User-{Fore.CYAN}[{Fore.WHITE}${Fore.CYAN}]{Fore.WHITE}#")
 
 def main():
-    link = ""
-    file = "proxy.txt"
-    times = 0
-    menu()
-    choice = int(input("Cern@User-[$]#"))
-    menu();
+    while(1):
+        clear()
+        menu()
+        choice = int(input(inpstring))
+        if choice == 1:
+            input()
+        if choice == 2:
+            input()
+        if choice == 3:
+            os.system(f"ping {ip}")
+        if choice == 0:
+            clear()
+            open('proxy.txt', 'w').close()
+            exit()
+        else:
+            print("Cern@admin-[$]> Invalid Choice")
+
+main()
 
 
 
