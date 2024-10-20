@@ -6,6 +6,7 @@ import platform
 import colorama
 from func import menu
 from colorama import  Fore
+from spammer import dos
 
 def clear():
     if(platform.system == 'Windows'):
@@ -25,7 +26,7 @@ def main():
         menu()
         choice = int(input(inpstring))
         if choice == 1:
-            input()
+            dos()
         if choice == 2:
             input()
         if choice == 3:
