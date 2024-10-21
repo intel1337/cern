@@ -1,4 +1,5 @@
 import os
+import subprocess
 import requests
 import urllib
 import sys
@@ -30,7 +31,17 @@ def main():
         if choice == 2:
             input()
         if choice == 3:
-            os.system(f"ping {ip}")
+
+            subprocess.Popen(["open", 'ping.py'])
+        if choice == 4:
+            domain = input(f"{inpstring}> Enter domain url :")
+            api_url = 'https://api.api-ninjas.com/v1/whois?domain={}'.format(domain)
+            whois_api = input(f"{inpstring}> Enter your WhoIs? api key :")
+            response = requests.get(api_url, headers={'X-Api-Key': whois_api})
+            if response.status_code == requests.codes.ok:
+                print(response.text)
+            else:
+                print("Error:", response.status_code, response.text)
         if choice == 0:
             clear()
             open('proxy.txt', 'w').close()
